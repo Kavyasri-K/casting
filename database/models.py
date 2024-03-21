@@ -3,8 +3,12 @@ from sqlalchemy import Column, Integer, String, Date
 from flask_sqlalchemy import SQLAlchemy
 
 #database_name = 'capstone'
-database_path = "postgresql://{}@{}/{}".format(
-    "postgres", "localhost:5432", "capstone")
+# database_path = "postgresql://{}@{}/{}".format(
+#     "postgres", "localhost:5432", "capstone")
+
+database_path = os.environ['DATABASE_URL']
+if database_path.startswith("postgres://"):
+    database_path = database_path.replace("postgres://", "postgresql://", 1)
 
 db = SQLAlchemy()
 
