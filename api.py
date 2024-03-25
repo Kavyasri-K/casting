@@ -5,10 +5,19 @@ from auth.auth import requires_auth
 from database.models import Actor, Movie, setup_db
 
 
-def create_app(test_config=None):
+def create_app(active=True, test_config=None):
     app = Flask(__name__)
-    setup_db(app)
-    CORS(app)
+    with app.app_context():
+        if active:
+            setup_db(app)
+
+    CORS(app, resources={r"/api/*": {"origins": "*"}})
+
+    @app.after_request
+    def after_request(response):
+        response.headers.add('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+        response.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE')
+        return response
 
 # --------------------------------------------------------------
 # Movie
@@ -34,7 +43,7 @@ def create_app(test_config=None):
 
         except Exception as e:
             abort(401)
-    
+
     @app.route('/movies/<int:movie_id>', methods=['GET'])
     @requires_auth('get:movies')
     def movies_detail(payload, movie_id):
@@ -54,7 +63,6 @@ def create_app(test_config=None):
 
         except Exception as e:
             abort(401)
-
 
     @app.route('/movies', methods=['POST'])
     @requires_auth('post:movies')
@@ -150,7 +158,7 @@ def create_app(test_config=None):
 
         except Exception as e:
             abort(401)
-    
+
     @app.route('/actors/<int:actor_id>', methods=['GET'])
     @requires_auth('get:actors')
     def actor_detail(payload, actor_id):
@@ -172,7 +180,6 @@ def create_app(test_config=None):
 
         except Exception as e:
             abort(401)
-
 
     @app.route('/actors', methods=['POST'])
     @requires_auth('post:actors')

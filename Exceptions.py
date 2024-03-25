@@ -3,6 +3,7 @@ from flask import jsonify
 import api as app
 from auth.auth import AuthError
 
+
 @app.errorhandler(422)
 def unprocessable(error):
     return jsonify({
