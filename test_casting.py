@@ -13,6 +13,7 @@ load_dotenv()
 DB_user = os.getenv('DB_user')
 DB_host = os.getenv('DB_host')
 DB_name = os.getenv('DB_name')
+DB_password = os.getenv('DB_password')
 
 
 class CastingTestCase(unittest.TestCase):
@@ -21,10 +22,10 @@ class CastingTestCase(unittest.TestCase):
         self.app = create_app(active=False)
         self.client = self.app.test_client
         self.database_name = 'postgres'
-        self.database_path = 'postgresql://{}@{}/{}'.format(
-            DB_user, DB_host, self.database_name)
+        self.database_path = 'postgresql://{}:{}@{}/{}'.format(
+            DB_user, DB_password, DB_host, self.database_name)
         setup_db(self.app)
-        self.token = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlNub24zeFAwRE1NTERxdzd0cEppNSJ9.eyJpc3MiOiJodHRwczovL2thdnlhc3Jpay51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjVmYzYyYmQ4OWVlYmM0YjgyZjJkNTQzIiwiYXVkIjoiY2FzdGluZyIsImlhdCI6MTcxMTM4OTkzNiwiZXhwIjoxNzExMzk3MTM2LCJzY29wZSI6IiIsImF6cCI6IlF3d0xTVDlCckQ3Vm9leWhNNzczbDJzVDdvMXY0TGpnIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOmFjdG9ycyIsImRlbGV0ZTptb3ZpZXMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyIsInBhdGNoOmFjdG9ycyIsInBhdGNoOm1vdmllcyIsInBvc3Q6YWN0b3JzIiwicG9zdDptb3ZpZXMiXX0.Q8Jh7iPOph4gIAIhRKm82N7JNc7jlMnNbsNTz-0ljIZT763BhPrrF7kPQSKkfZ9khi73IOid8cDMozP2mZOcq1ZrbuGeJ_-Pfz-hLKfVg4bt6bToGBPS4Po7qdoWHKp43zbIxSmQHZBPQjpuSp472iENz9qg4EP8fIVIewaTwDFhJe4eN69Dlq1CHs3_rzPbR_jq6IBuMVmPSY6NyBOvHC4McWEYpm3qW9Yoo6i2UfGYapOIAwmrEWpnk3sTN2H6llIrmDM3g6NlGsgu_fGCAXF4eFpgeIs3ajATQG12T9mzXAnig-dDwFrlHokIvYpiPHmjcTmDhD8Bf7ReqA0_xg'
+        self.token = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlNub24zeFAwRE1NTERxdzd0cEppNSJ9.eyJpc3MiOiJodHRwczovL2thdnlhc3Jpay51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjVmYzYyYmQ4OWVlYmM0YjgyZjJkNTQzIiwiYXVkIjoiY2FzdGluZyIsImlhdCI6MTcxMTM5MjYyNCwiZXhwIjoxNzExMzk5ODI0LCJzY29wZSI6IiIsImF6cCI6IlF3d0xTVDlCckQ3Vm9leWhNNzczbDJzVDdvMXY0TGpnIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOmFjdG9ycyIsImRlbGV0ZTptb3ZpZXMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyIsInBhdGNoOmFjdG9ycyIsInBhdGNoOm1vdmllcyIsInBvc3Q6YWN0b3JzIiwicG9zdDptb3ZpZXMiXX0.YR7-B5yv13teYFdugb2wG6l4vS6v1Ni8V-jw1HVsKATT6Rgg9Tu-GoWsafZzb3xKk-KfQ4KYeUFKDWh7rgiyayTOB7TwMnbYd415QsmEO8Fexi2jFffU22nYHNlKsUy_C11bBwSPtfpCZ8FtkYYZUCte6PLf9AuRhSQGjQDrzLse8_19jI0wDqM9Nrpv9mTwDcSRzKxLfIPpV3f4aY_G_9PjhxU7PlS8nAC0kKxdksgWvxfj8u0SLytzZypyXPbUqANE-fzgKXqPvR11LRyygsk4wga2sSEDBWwWLT6NBlaH2riUf_CERQuJk9T3OjZ0g2GKZhqloYmC8Ghepxx1_A'
 
         self.headers = {
             'Content-Type': 'application/json',
@@ -58,12 +59,12 @@ class CastingTestCase(unittest.TestCase):
         }
 
     def tearDown(self):
-        with self.app.app_context():
-            db.drop_all()
-        # pass
+        # with self.app.app_context():
+        #     db.drop_all()
+        pass
 
     # ----------------------------------------
-    # Actors
+    # Movies
     # ----------------------------------------
 
     def test_get_movies_without_authentication(self):

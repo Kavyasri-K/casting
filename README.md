@@ -2,28 +2,6 @@
 
 ## Final Project
 
-Overview of the Project:
-
-The Application is for Casting agency to organise Acots and Movies.
-
-This application uses below endpoints
-----------------------------
-- GET /movies
-- GET /actors
-- GET /movies/id
-- GET /actors/id
-
-- POST /movies
-- POST /actors
-
-- PATCH /movies/id
-- PATCH /actors/id
-
-- DELETE /movies/id
-- DELETE /actors/id
-
-----------------------------
-
 Getting Started
 
 ## Tools needed
@@ -33,10 +11,6 @@ Getting Started
 #### Python 3.7
 
 Follow instructions to install the latest version of python for your platform in the [python docs](https://docs.python.org/3/using/unix.html#getting-and-installing-the-latest-version-of-python)
-
-#### Virtual Environment
-
-We recommend working within a virtual environment whenever using Python for projects. This keeps your dependencies for each project separate and organized. Instructions for setting up a virtual environment for your platform can be found in the [python docs](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/)
 
 
 #### PIP Dependencies
@@ -57,21 +31,34 @@ This will install all of the required packages we selected within the `requireme
 
 - [jose](https://python-jose.readthedocs.io/en/latest/) JavaScript Object Signing and Encryption for JWTs. Useful for encoding, decoding, and verifying JWTS.
 
-## Running the server
+Overview of the Project:
 
-Each time you open a new terminal session, run:
+The Application is for Casting agency to organise Actors and Movies.
 
-```bash
-export FLASK_APP=api.py;
-```
+## Models
 
-To run the server, execute:
+Create 2 models
+   - Actors model with name, age and gender attribute
+   - Movies model with title and release_date attribute
 
-```bash
-flask run --reload
-```
+This application uses below endpoints
+----------------------------
+- GET /movies
+- GET /actors
+- GET /movies/id
+- GET /actors/id
 
-The `--reload` flag will detect file changes and restart the server automatically.
+- POST /movies
+- POST /actors
+
+- PATCH /movies/id
+- PATCH /actors/id
+
+- DELETE /movies/id
+- DELETE /actors/id
+
+----------------------------
+
 
 ### Setup Auth0
 
@@ -130,7 +117,7 @@ The `--reload` flag will detect file changes and restart the server automaticall
         - Assign Executive Director Role to one more user
    - Sign into each account and make note of the JWT.
 
-   - Import the postman collection `./starter_code/udacity-fsnd-udaspicelatte.postman_collection.json`
+   - Import the postman collection `Casting.postman_collection.json`
 
    - Right-clicking the collection folder for casting assistant, casting director and executive producer, navigate to the authorization tab, and including the JWT in the token field (you should have noted these JWTs).
    

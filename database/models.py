@@ -2,18 +2,15 @@ import os
 from sqlalchemy import Column, Integer, String, Date
 from flask_sqlalchemy import SQLAlchemy
 
-database_name = 'capstone'
-database_path = "postgresql://{}@{}/{}".format(
-    "postgres", "localhost:5432", "capstone")
 
-# database_path = os.environ['DATABASE_URL']
-# if database_path.startswith("postgres://"):
-#     database_path = database_path.replace("postgres://", "postgresql://", 1)
+database_path = os.environ['DATABASE_URL']
+if database_path.startswith("postgres://"):
+    database_path = database_path.replace("postgres://", "postgresql://", 1)
 
 db = SQLAlchemy()
 
 
-def setup_db(app):
+def setup_db(app, database_path=database_path):
     with app.app_context():
         app.config["SQLALCHEMY_DATABASE_URI"] = database_path
         app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
