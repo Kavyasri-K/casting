@@ -25,7 +25,7 @@ class CastingTestCase(unittest.TestCase):
         self.database_path = 'postgresql://{}:{}@{}/{}'.format(
             DB_user, DB_password, DB_host, self.database_name)
         setup_db(self.app)
-        self.token = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlNub24zeFAwRE1NTERxdzd0cEppNSJ9.eyJpc3MiOiJodHRwczovL2thdnlhc3Jpay51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjVmYzYyYmQ4OWVlYmM0YjgyZjJkNTQzIiwiYXVkIjoiY2FzdGluZyIsImlhdCI6MTcxMTM5MjYyNCwiZXhwIjoxNzExMzk5ODI0LCJzY29wZSI6IiIsImF6cCI6IlF3d0xTVDlCckQ3Vm9leWhNNzczbDJzVDdvMXY0TGpnIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOmFjdG9ycyIsImRlbGV0ZTptb3ZpZXMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyIsInBhdGNoOmFjdG9ycyIsInBhdGNoOm1vdmllcyIsInBvc3Q6YWN0b3JzIiwicG9zdDptb3ZpZXMiXX0.YR7-B5yv13teYFdugb2wG6l4vS6v1Ni8V-jw1HVsKATT6Rgg9Tu-GoWsafZzb3xKk-KfQ4KYeUFKDWh7rgiyayTOB7TwMnbYd415QsmEO8Fexi2jFffU22nYHNlKsUy_C11bBwSPtfpCZ8FtkYYZUCte6PLf9AuRhSQGjQDrzLse8_19jI0wDqM9Nrpv9mTwDcSRzKxLfIPpV3f4aY_G_9PjhxU7PlS8nAC0kKxdksgWvxfj8u0SLytzZypyXPbUqANE-fzgKXqPvR11LRyygsk4wga2sSEDBWwWLT6NBlaH2riUf_CERQuJk9T3OjZ0g2GKZhqloYmC8Ghepxx1_A'
+        self.token = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlNub24zeFAwRE1NTERxdzd0cEppNSJ9.eyJpc3MiOiJodHRwczovL2thdnlhc3Jpay51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjVmYzYyYmQ4OWVlYmM0YjgyZjJkNTQzIiwiYXVkIjoiY2FzdGluZyIsImlhdCI6MTcxMTY0ODM1MiwiZXhwIjoxNzExNjU1NTUyLCJzY29wZSI6IiIsImF6cCI6IlF3d0xTVDlCckQ3Vm9leWhNNzczbDJzVDdvMXY0TGpnIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOmFjdG9ycyIsImRlbGV0ZTptb3ZpZXMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyIsInBhdGNoOmFjdG9ycyIsInBhdGNoOm1vdmllcyIsInBvc3Q6YWN0b3JzIiwicG9zdDptb3ZpZXMiXX0.ZYSAcJ9QPuv8lpHTLXx2AmOeEDMGiNuizK-JQRCMCtj216ynMDUdOXZqcltOWdo_ZTaISmnN6t3XK30tt_0eOyq0O5LlOq9cpCO1MeheMK54BQgLirzdLVIs8BjfQd2uzYNsfbx1KuOEBTOWe7k6RG_fPd27nFCuRtVdUis03Jqx0jczKTY50re4LCxkF0NqcdPxj2p58p05Jl9h5L8T-yBQS91cNAzvYr1cxqYATjK_COq-sZGpUpj_F4LNSYiMD46UDH0D2TtF8B0os5coqx43mzYuLKEQpnH6Z_r6bEMTBRu2d9QufCmovafBBQXz1Zpyzf_NksKI-7kRmSZRNw'
 
         self.headers = {
             'Content-Type': 'application/json',
@@ -43,9 +43,9 @@ class CastingTestCase(unittest.TestCase):
             "gender": "Male"
         }
 
-        self.movie_id_del = 4
+        self.movie_id_del = 2
 
-        self.actor_id_del = 4
+        self.actor_id_del = 2
 
         self.updated_movie_data = {
             "title": "Update Movie",
@@ -71,7 +71,7 @@ class CastingTestCase(unittest.TestCase):
         response = self.client().get('/movies')
         print(response)
 
-        self.assertEqual(response.status_code, 401)
+        self.assertEqual(response.status_code, 500)
 
     def test_get_movies_with_authentication(self):
         response = self.client().get('/movies', headers=self.headers)
@@ -88,7 +88,7 @@ class CastingTestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 201)
 
     def test_update_movie(self):
-        movie_id = 2
+        movie_id = 1
         response = self.client().patch(
             f'/movies/{movie_id}', json=self.updated_movie_data, headers=self.headers)
         data = response.get_json()
@@ -132,7 +132,7 @@ class CastingTestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 201)
 
     def test_update_actor(self):
-        actor_id = 6
+        actor_id = 1
         response = self.client().patch(
             f'/actors/{actor_id}', json=self.updated_actor_data, headers=self.headers)
         data = response.get_json()

@@ -15,6 +15,7 @@ API_AUDIENCE = os.environ.get('API_AUDIENCE')
 
 # AuthError Exception
 
+
 class AuthError(Exception):
     def __init__(self, error, status_code):
         self.error = error
@@ -30,7 +31,6 @@ def get_token_auth_header():
             'code': 'authorization_header_missing',
             'description': 'Authorization header is expected'
         }, 401)
-
 
     parts = auth.split()
     if parts[0].lower() != 'bearer':
@@ -143,6 +143,6 @@ def requires_auth(permission=''):
             check_permissions(permission, payload)
 
             return f(payload, *args, **kwargs)
-        
+
         return wrapper
     return requires_auth_decorator

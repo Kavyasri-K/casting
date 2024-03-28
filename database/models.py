@@ -2,6 +2,10 @@ import os
 from sqlalchemy import Column, Integer, String, Date
 from flask_sqlalchemy import SQLAlchemy
 
+from settings import DB_USER, DB_PASSWORD, DB_URI, DB_NAME
+
+# database_path = 'postgresql://{}:{}@{}/{}'.format(
+#     DB_USER, DB_PASSWORD, DB_URI, DB_NAME)
 
 database_path = os.environ['DATABASE_URL']
 if database_path.startswith("postgres://"):

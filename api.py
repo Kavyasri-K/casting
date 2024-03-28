@@ -20,6 +20,10 @@ def create_app(active=True, test_config=None):
         response.headers.add('Access-Control-Allow-Methods',
                              'GET, POST, PUT, PATCH, DELETE')
         return response
+    
+    @app.route('/')
+    def index():
+        return jsonify({'message': 'Welcome to Casting project'})
 
 # --------------------------------------------------------------
 # Movie
