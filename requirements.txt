@@ -18,3 +18,4 @@ six
 SQLAlchemy
 Werkzeug
 python-jose
+load_dotenv
