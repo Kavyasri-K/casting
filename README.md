@@ -1,6 +1,6 @@
 # Casting Agency
 
-## Final Project
+## rOverview
 
 Casting Agency project heps you to get the details of the Actors and Movies. Also, we have Role Based permissions which lets you to play around the different roles and check what all actions could be performed by different users.
 
@@ -139,6 +139,195 @@ This application uses below endpoints
 ## Deployment Link for the Application 
 
 https://casting-2tvr.onrender.com
+
+Below curl to execute the APIs via CURL or Postman. For example:
+```bash
+Returns the list of all the movies along with the title and release date of the movie.
+
+Sample Curl:
+$ curl -X GET 'https://casting-2tvr.onrender.com/movies' \ --header 'Authorization: Bearer <access-token>'
+
+Sample Response:
+{
+    "movies": [
+        {
+            "id": 1,
+            "release_date": "2023-04-17",
+            "title": "Thangamagan"
+        },
+        {
+            "id": 2,
+            "release_date": "2021-01-09",
+            "title": "Bigil"
+        }
+    "success": true
+}
+```
+```bash
+Returns the specific movie based on the ID provided.
+
+Sample Curl:
+$ curl -X GET 'https://casting-2tvr.onrender.com/movies/1' \ --header 'Authorization: Bearer <access-token>'
+
+Sample Response:
+{
+    "movies": {
+        "id": 1,
+        "release_date": "2023-04-17",
+        "title": "Thangamagan"
+    },
+    "success": true
+}
+```
+```bash
+Returns the newly created movie along with the success message.
+
+Sample Curl:
+$ curl -X POST 'https://casting-2tvr.onrender.com/movies' \ --header 'Authorization: Bearer <access-token>'
+
+Sample Request:
+{
+    "title": "Jawan",
+    "release_date": "2021-01-01"
+}
+
+Sample Response:
+{
+    "movies": "Jawan",
+    "success": true
+}
+```
+```bash
+Returns the updated movie details along with the success message.
+
+Sample Curl:
+$ curl -X PATCH --request PATCH 'https://casting-2tvr.onrender.com/movies/1' \ --header 'Authorization: Bearer <access-token>'
+
+Sample Request:
+{
+    "title": "Viswasam",
+    "release_date": "2021-01-09"
+}
+
+Sample Response:
+{
+    "movie": "Viswasam",
+    "success": true
+}
+```
+```bash
+Returns the ID of the deleted movies along with the success message.
+
+Sample Curl:
+$ curl -X DELETE --request DELETE 'https://casting-2tvr.onrender.com/movies/1' \
+--header 'Authorization: Bearer <access-token>'
+
+Sample Response:
+{
+    "deleted_movie": 5,
+    "success": true
+}
+```
+```bash
+Returns the list of all the actors along with the ID, name, age and gender of the actor.
+
+Sample Curl:
+$ curl -X GET 'https://casting-2tvr.onrender.com/actors' \ --header 'Authorization: Bearer <access-token>'
+
+Sample Response:
+{
+    "actors": [
+        {
+            "id": 1,
+            "age": "35",
+            "gender": "Male",
+            "name": "Vijay"
+        },
+        {
+            "id": 2,
+            "age": "37",
+            "gender": "Male",
+            "name": "Karthik"
+        }
+    ],
+    "success": true
+}
+```
+```bash
+Returns the details of the specified actors along with the ID, name, age, gender of the actor and the success message.
+
+Sample Curl:
+$ curl -X GET 'https://casting-2tvr.onrender.com/actors/1' \ --header 'Authorization: Bearer <access-token>' 
+
+Sample Response:
+{
+    "movies": {
+        "id": 1,
+        "age": "35",
+        "gender": "Male",
+        "name": "Vijay"
+    },
+    "success": true
+}
+```
+```bash
+Returns the newly created actor details along with the ID, name, age, gender of the actor and the success message.
+
+Sample Curl:
+$ curl -X POST 'https://casting-2tvr.onrender.com/actors' \ --header 'Authorization: Bearer <access-token>'
+
+Sample Request:
+{
+    "name": "Jo",
+    "age": 39,
+    "gender": "Female"
+}
+
+Sample Response:
+{
+    "age": "39",
+    "gender": "Female",
+    "name": "Jo",
+    "success": true
+}
+```
+```bash
+Returns the updated actor details along with the ID, name, age, gender of the actor and the success message.
+
+Sample Curl:
+$ curl -X PATCH --request PATCH 'https://casting-2tvr.onrender.com/actors/1' \ --header 'Authorization: Bearer <access-token>'
+
+Sample Request:
+{
+    "name": "Vijay",
+    "age": 35,
+    "gender": "Male"
+}
+
+Sample Response:
+{
+    "actor": {
+        "age": "35",
+        "gender": "Male",
+        "id": 1,
+        "name": "Vijay"
+    },
+    "success": true
+}
+```
+```bash
+Returns the deleted actor ID along with the success message.
+
+Sample Curl:
+$ curl -X DELETE --request DELETE 'https://casting-2tvr.onrender.com/actors/1' \
+--header 'Authorization: Bearer <access-token>'
+
+Sample Response:
+{
+    "deleted_actor": 1,
+    "success": true
+}
+```
 
 ## TEST and PostMan Collection
 
