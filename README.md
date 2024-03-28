@@ -2,7 +2,9 @@
 
 ## Final Project
 
-Getting Started
+Casting Agency project heps you to get the details of the Actors and Movies. Also, we have Role Based permissions which lets you to play around the different roles and check what all actions could be performed by different users.
+
+## Getting Started
 
 ## Tools needed
     - VS Code
@@ -31,7 +33,7 @@ This will install all of the required packages we selected within the `requireme
 
 - [jose](https://python-jose.readthedocs.io/en/latest/) JavaScript Object Signing and Encryption for JWTs. Useful for encoding, decoding, and verifying JWTS.
 
-Overview of the Project:
+## Overview of the Project:
 
 The Application is for Casting agency to organise Actors and Movies.
 
