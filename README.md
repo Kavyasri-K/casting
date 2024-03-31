@@ -333,3 +333,21 @@ Sample Response:
 
 Attach the casting api file 
 - Update the Postman token and run the collections
+
+### Error Handling
+
+Errors are returned as JSON objects in the following format:
+```json
+{
+    "success": False, 
+    "error": 400,
+    "message": "bad request"
+}
+```
+The API will return three error types when requests fail:
+- 400: Bad Request
+- 401: Unauthorized
+- 403: Forbidden
+- 404: Resource Not Found
+- 422: Not Processable 
+- 500: Internal Server Error
