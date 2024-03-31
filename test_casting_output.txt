@@ -1,0 +1,255 @@
+C:\Users\Kavyasri\Documents\Project\Projects\Casting>python test_casting.py
+C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\jose\jwt.py:311: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = timegm(datetime.utcnow().utctimetuple())
+..<WrapperTestResponse streamed [200 OK]>
+b'{\n  "Actors": [\n    {\n      "age": 78,\n      "gender": "Male",\n      "id": 3,\n      "name": "Goundamani"\n    },\n    {\n      "age": 78,\n      "gender": "Male",\n      "id": 4,\n      "name": "Goundamani"\n    }\n  ],\n  "success": true\n}\n'
+.E<WrapperTestResponse streamed [200 OK]>
+b'{\n  "Movies": [\n    {\n      "id": 3,\n      "release_date": "2017-05-16",\n      "title": "Billa"\n    },\n    {\n      "id": 4,\n      "release_date": "2017-05-16",\n      "title": "Billa"\n    },\n    {\n      "id": 5,\n      "release_date": "2017-05-16",\n      "title": "Billa"\n    }\n  ],\n  "success": true\n}\n'
+.E<WrapperTestResponse streamed [201 CREATED]>
+.<WrapperTestResponse streamed [201 CREATED]>
+.FF
+======================================================================
+ERROR: test_get_actors_without_authentication (__main__.CastingTestCase.test_get_actors_without_authentication)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Kavyasri\Documents\Project\Projects\Casting\test_casting.py", line 114, in test_get_actors_without_authentication
+    response = self.client().get('/actors')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\test.py", line 1160, in get
+    return self.open(*args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\testing.py", line 235, in open
+    response = super().open(
+               ^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\test.py", line 1114, in open
+    response = self.run_wsgi_app(request.environ, buffered=buffered)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\test.py", line 986, in run_wsgi_app
+    rv = run_wsgi_app(self.application, environ, buffered=buffered)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\test.py", line 1262, in run_wsgi_app
+    app_rv = app(environ, start_response)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1488, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1466, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\Documents\Project\Projects\Casting\auth\auth.py", line 140, in wrapper
+    token = get_token_auth_header()
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\Documents\Project\Projects\Casting\auth\auth.py", line 30, in get_token_auth_header
+    raise AuthError({
+auth.auth.AuthError: ({'code': 'authorization_header_missing', 'description': 'Authorization header is expected'}, 401)
+
+======================================================================
+ERROR: test_get_movies_without_authentication (__main__.CastingTestCase.test_get_movies_without_authentication)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Kavyasri\Documents\Project\Projects\Casting\test_casting.py", line 71, in test_get_movies_without_authentication
+    response = self.client().get('/movies')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\test.py", line 1160, in get
+    return self.open(*args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\testing.py", line 235, in open
+    response = super().open(
+               ^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\test.py", line 1114, in open
+    response = self.run_wsgi_app(request.environ, buffered=buffered)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\test.py", line 986, in run_wsgi_app
+    rv = run_wsgi_app(self.application, environ, buffered=buffered)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\test.py", line 1262, in run_wsgi_app
+    app_rv = app(environ, start_response)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1488, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1466, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\Documents\Project\Projects\Casting\auth\auth.py", line 140, in wrapper
+    token = get_token_auth_header()
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\Documents\Project\Projects\Casting\auth\auth.py", line 30, in get_token_auth_header
+    raise AuthError({
+auth.auth.AuthError: ({'code': 'authorization_header_missing', 'description': 'Authorization header is expected'}, 401)
+
+======================================================================
+FAIL: test_update_actor (__main__.CastingTestCase.test_update_actor)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Kavyasri\Documents\Project\Projects\Casting\test_casting.py", line 139, in test_update_actor
+    self.assertEqual(response.status_code, 201)
+AssertionError: 422 != 201
+
+======================================================================
+FAIL: test_update_movie (__main__.CastingTestCase.test_update_movie)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Kavyasri\Documents\Project\Projects\Casting\test_casting.py", line 95, in test_update_movie
+    self.assertEqual(response.status_code, 201)
+AssertionError: 422 != 201
+
+----------------------------------------------------------------------
+Ran 10 tests in 6.658s
+
+FAILED (failures=2, errors=2)
+
+C:\Users\Kavyasri\Documents\Project\Projects\Casting>python test_casting.py
+C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\jose\jwt.py:311: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = timegm(datetime.utcnow().utctimetuple())
+..<WrapperTestResponse streamed [200 OK]>
+b'{\n  "Actors": [\n    {\n      "age": 78,\n      "gender": "Male",\n      "id": 3,\n      "name": "Goundamani"\n    },\n    {\n      "age": 78,\n      "gender": "Male",\n      "id": 5,\n      "name": "Goundamani"\n    }\n  ],\n  "success": true\n}\n'
+.E<WrapperTestResponse streamed [200 OK]>
+b'{\n  "Movies": [\n    {\n      "id": 3,\n      "release_date": "2017-05-16",\n      "title": "Billa"\n    },\n    {\n      "id": 5,\n      "release_date": "2017-05-16",\n      "title": "Billa"\n    },\n    {\n      "id": 6,\n      "release_date": "2017-05-16",\n      "title": "Billa"\n    }\n  ],\n  "success": true\n}\n'
+.E<WrapperTestResponse streamed [201 CREATED]>
+.<WrapperTestResponse streamed [201 CREATED]>
+...
+======================================================================
+ERROR: test_get_actors_without_authentication (__main__.CastingTestCase.test_get_actors_without_authentication)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Kavyasri\Documents\Project\Projects\Casting\test_casting.py", line 114, in test_get_actors_without_authentication
+    response = self.client().get('/actors')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\test.py", line 1160, in get
+    return self.open(*args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\testing.py", line 235, in open
+    response = super().open(
+               ^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\test.py", line 1114, in open
+    response = self.run_wsgi_app(request.environ, buffered=buffered)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\test.py", line 986, in run_wsgi_app
+    rv = run_wsgi_app(self.application, environ, buffered=buffered)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\test.py", line 1262, in run_wsgi_app
+    app_rv = app(environ, start_response)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1488, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1466, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\Documents\Project\Projects\Casting\auth\auth.py", line 140, in wrapper
+    token = get_token_auth_header()
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\Documents\Project\Projects\Casting\auth\auth.py", line 30, in get_token_auth_header
+    raise AuthError({
+auth.auth.AuthError: ({'code': 'authorization_header_missing', 'description': 'Authorization header is expected'}, 401)
+
+======================================================================
+ERROR: test_get_movies_without_authentication (__main__.CastingTestCase.test_get_movies_without_authentication)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Kavyasri\Documents\Project\Projects\Casting\test_casting.py", line 71, in test_get_movies_without_authentication
+    response = self.client().get('/movies')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\test.py", line 1160, in get
+    return self.open(*args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\testing.py", line 235, in open
+    response = super().open(
+               ^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\test.py", line 1114, in open
+    response = self.run_wsgi_app(request.environ, buffered=buffered)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\test.py", line 986, in run_wsgi_app
+    rv = run_wsgi_app(self.application, environ, buffered=buffered)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\test.py", line 1262, in run_wsgi_app
+    app_rv = app(environ, start_response)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1488, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1466, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\Documents\Project\Projects\Casting\auth\auth.py", line 140, in wrapper
+    token = get_token_auth_header()
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kavyasri\Documents\Project\Projects\Casting\auth\auth.py", line 30, in get_token_auth_header
+    raise AuthError({
+auth.auth.AuthError: ({'code': 'authorization_header_missing', 'description': 'Authorization header is expected'}, 401)
+
+----------------------------------------------------------------------
+Ran 10 tests in 7.741s
